@@ -31,10 +31,8 @@ def ws_receive(message):
 
     if data:
         log.debug('owner=%s entry=%s', **data)
-        data['result'] = 20
+        data['result'] = eval(data['entry'])
         m = CalculatorData.objects.create(**data)
-        print(m, '+'*50)
-        # m = room.messages.create(**data)
 
         # See above for the note about Group
         Group('calculate', channel_layer=message.channel_layer).send({'text': json.dumps(m.as_dict())})

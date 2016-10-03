@@ -6,6 +6,8 @@ from .models import CalculatorData
 def home(request):
     results = reversed(CalculatorData.objects.order_by("-timestamp")[:10])
 
+    print(results)
+
     return render(request, "home.html", {
-        results: results,
+        'results': results,
     })

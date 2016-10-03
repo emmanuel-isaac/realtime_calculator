@@ -21,7 +21,9 @@
     </div>
 
     <div id="results">
-
+      {% for result in results  %}
+        {{ result }}
+      {% endfor %}
     </div>
   </div>
 {% endblock %}
