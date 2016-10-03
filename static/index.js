@@ -19,8 +19,8 @@ $(function() {
 
     $("#calculatorForm").on("submit", function(event) {
         var message = {
-            handle: $('#handle').val(),
-            input: $('#calculatorInput').val()
+            owner: $('#handle').val(),
+            entry: $('#calculatorInput').val()
         }
         chatsock.send(JSON.stringify(message));
         $("#calculatorInput").val('').focus();

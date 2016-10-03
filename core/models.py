@@ -1,10 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 # Create your models here.
 class CalculatorData(models.Model):
-    owner = models.ForeignKey(User)
-    input = models.CharField(max_length=250)
+    owner = models.CharField(max_length=250)
+    entry = models.CharField(max_length=250)
     result = models.FloatField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
@@ -13,12 +12,12 @@ class CalculatorData(models.Model):
         return self.timestamp.strftime('%b %-d %-I:%M %p')
 
     def __str__(self):
-        return "{} - {} at {}".format(input, result, self.formatted_timestamp)
+        return '[{timestamp}] {owner}: {entry} - {result}'.format(**self.as_dict())
 
     def as_dict(self):
         return {
-            owner: self.owner,
-            input: self.input,
-            result: self.result,
-            timestamp: self.formatted_timestamp,
+            'owner': self.owner,
+            'entry': self.entry,
+            'result': self.result,
+            'timestamp': self.formatted_timestamp,
         }
