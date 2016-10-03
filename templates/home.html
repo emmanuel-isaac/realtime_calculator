@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Realtime Calculator</title>
-  </head>
-  <body>
-    Welcome here, y'all
-  </body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="container">
+    <div id="calculator">
+      <form id="calculatorForm" method="post">
+        <div class="form-group">
+          <label for="handle">Handle</label>
+          <input id="handle" class="form-control" type="text" name="name" value="">
+        </div>
+
+        <div class="form-group">
+          <label for="calculatorInput">Input</label>
+          <input id="calculatorInput" class="form-control" type="text" name="input" value="">
+        </div>
+
+        <button type="button" name="button" class="btn btn-default">Calculate</button>
+      </form>
+    </div>
+
+    <div id="results">
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block afterbody %}
+  <script type="text/javascript" src='{% static "reconnecting-websocket.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "index.js" %}'></script>
+{% endblock %}
