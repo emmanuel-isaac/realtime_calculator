@@ -4,7 +4,7 @@ from .models import CalculatorData
 
 # Create your views here.
 def home(request):
-    results = reversed(CalculatorData.objects.order_by("-timestamp")[:10])
+    results = CalculatorData.objects.order_by("-timestamp")[:10]
 
     print(results)
 

@@ -3,32 +3,56 @@
 
 {% block content %}
   <div class="container">
+
+    <h1>Real Time Calculator</h1>
+
     <div id="calculator">
-      <div class="form-group">
-        <p>
-          <label for="handle">Your name:</label>
-          <input id="handle" type="text" placeholder="handle" class="form-control">
-        </p>
+      <div>
+        <label for="handle">Your name:</label>
+        <input id="handle" type="text" placeholder="handle" class="form-control">
       </div>
 
-      <form id="calculatorForm">
-        <div class="form-group">
-          <label for="calculatorInput">Input</label>
-          <input id="calculatorInput" class="form-control" type="text" name="input" value="" required>
-        </div>
-        <button type="submit" class="btn btn-default">Calculate</button>
-      </form>
+      <hr />
+
+      <div>
+        <form id="calculatorForm">
+          <div class="form-group">
+            <label for="calculatorInput">Input</label>
+            <input id="calculatorInput" class="form-control" type="text" name="input" value="" required>
+          </div>
+          <button type="submit" class="btn btn-default">Calculate</button>
+        </form>
+      </div>
     </div>
 
+    <hr />
+
     <div id="results">
-      {% for result in results  %}
-        {{ result }}
-      {% endfor %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>User</th>
+            <th>Entry</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for result in results %}
+            <tr>
+              <th>{{ result.formatted_timestamp }}</th>
+              <td>{{ result.owner }}</td>
+              <td>{{ result.entry }}</td>
+              <td>= {{ result.result }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
   </div>
 {% endblock %}
 
-{% block afterbody %}
-  <script type="text/javascript" src='{% static "reconnecting-websocket.min.js" %}'></script>
+ {% block afterbody %}
+  <script type="text/javascript"src='{% static "reconnecting-websocket.min.js" %}'></script>
   <script type="text/javascript" src='{% static "index.js" %}'></script>
 {% endblock %}

@@ -9,7 +9,7 @@ class CalculatorData(models.Model):
 
     @property
     def formatted_timestamp(self):
-        return self.timestamp.strftime('%b %-d %-I:%M %p')
+        return self.timestamp.strftime('%b. %-d, %-I:%M %p')
 
     def __str__(self):
         return '[{timestamp}] {owner}: {entry} - {result}'.format(**self.as_dict())
