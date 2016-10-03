@@ -1,0 +1,20 @@
+.markup {
+  border: thin #D9D9D9 solid;
+  border-radius: 5px;
+  min-height: 200px;
+  padding: 20px;
+}
+
+.borderize {
+  border: thin #D9D9D9 solid;
+  border-radius: 5px;
+  height: 50px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.borderize:hover {
+  background-color: #D9D9D9;
+  -webkit-transition: 1s;
+}
