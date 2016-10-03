@@ -1,0 +1,15 @@
+{
+  "name": "real_time_calc",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emmanuel Isaac",
+  "license": "ISC",
+  "dependencies": {
+    "cookie": "^0.3.1",
+    "socket.io": "^1.4.8"
+  }
+}
