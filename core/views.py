@@ -5,9 +5,9 @@ from .models import CalculatorData
 # Create your views here.
 def home(request):
     results = CalculatorData.objects.order_by("-timestamp")[:10]
-
-    print(results)
+    operators = ["-", "*", "/", "+"]
 
     return render(request, "home.html", {
         'results': results,
+        'operators': operators,
     })

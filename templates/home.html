@@ -6,22 +6,54 @@
 
     <h1>Real Time Calculator</h1>
 
-    <div id="calculator">
-      <div>
-        <label for="handle">Your name:</label>
-        <input id="handle" type="text" placeholder="handle" class="form-control">
-      </div>
+    <div id="calculator" class="row">
+      <div class="col-sm-8">
+        <div>
+          <label for="handle">Your name:</label>
+          <input id="handle" type="text" placeholder="handle" class="form-control">
+        </div>
 
-      <hr />
+        <hr />
 
-      <div>
-        <form id="calculatorForm">
-          <div class="form-group">
-            <label for="calculatorInput">Input</label>
-            <input id="calculatorInput" class="form-control" type="text" name="input" value="" required>
+        <div>
+          <form id="calculatorForm">
+            <div class="form-group">
+              <label for="calculatorInput">Input</label>
+              <input id="calculatorInput" class="form-control" type="text" name="input" value="" readonly required>
+            </div>
+            <button type="submit" class="btn btn-default">Calculate</button>
+            </div>
+          </form>
+        </div>
+
+      <div class="col-sm-4">
+        <div class="markup">
+          <div class="row">
+            {% with ''|center:10 as range %}
+              {% for _ in range %}
+                <div class="col-xs-3">
+                  <div class="borderize">
+                    {{ forloop.counter }}
+                  </div>
+                </div>
+              {% endfor %}
+            {% endwith %}
+
+            {% for operator in operators  %}
+              <div class="col-xs-3">
+                <div class="borderize">
+                  {{ operator }}
+                </div>
+              </div>
+            {% endfor %}
+
+            <div class="col-xs-3">
+              <div class="borderize" data-name="backspace">
+                <i class="material-icons">arrow_back</i>
+              </div>
+            </div>
           </div>
-          <button type="submit" class="btn btn-default">Calculate</button>
-        </form>
+        </div>
       </div>
     </div>
 

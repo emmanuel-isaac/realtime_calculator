@@ -26,4 +26,15 @@ $(function() {
         $("#calculatorInput").val('').focus();
         return false;
     });
+
+    $(".borderize").click(function(e) {
+        var initValue = $("#calculatorInput").val();
+        var value = $.trim(e.target.innerHTML);
+
+        if (value === 'arrow_back') {
+            $("#calculatorInput").val(initValue.slice(0, -1));
+            return false;
+        }
+        $("#calculatorInput").val(initValue + value)
+    });
 });
