@@ -1,8 +1,12 @@
+from __future__ import division
+
 import re
 import json
 import logging
+
 from channels import Group
 from channels.sessions import channel_session
+
 from .models import CalculatorData
 
 log = logging.getLogger(__name__)
@@ -27,7 +31,8 @@ def ws_receive(message):
 
     if data:
         log.debug('owner=%s entry=%s', **data)
-        data['result'] = eval(data['entry'])
+        data['result'] = '%.3f' % round(eval(compile(data['entry'], '<string>', 'eval', division.compiler_flag)), 3)
+        data['owner'] = data['owner'] or 'AnonymousUser'
         m = CalculatorData.objects.create(**data)
 
         Group('calculate', channel_layer=message.channel_layer).send({'text': json.dumps(m.as_dict())})
